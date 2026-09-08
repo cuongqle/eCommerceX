@@ -7,7 +7,7 @@ import { loginRequest, useSession } from "@/components/session-provider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { StoreBrand } from "@/components/store/store-brand";
+import { StoreBrand } from "@/components/store/settings/store-brand";
 import { DEFAULT_STORE_SETTINGS, fetchStoreSettings } from "@/lib/store-settings";
 import type { StoreSettings } from "@/lib/types";
 

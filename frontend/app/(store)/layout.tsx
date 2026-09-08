@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { StoreFooter } from "@/components/store/store-footer";
-import { StoreHeader } from "@/components/store/store-header";
-import { StoreSettingsProvider } from "@/components/store/store-settings-provider";
+import { StoreFooter } from "@/components/store/layout/store-footer";
+import { StoreHeader } from "@/components/store/layout/store-header";
+import { StoreSettingsProvider } from "@/components/store/settings/store-settings-provider";
 import { api } from "@/lib/api";
 import { nestCategories } from "@/lib/categories";
 import { fetchStoreSettings } from "@/lib/store-settings";

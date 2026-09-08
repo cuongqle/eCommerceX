@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ExternalLink, FolderTree, LayoutDashboard, Package, Settings, ShoppingCart, Users } from "lucide-react";
-import { StoreBrand } from "@/components/store/store-brand";
+import { StoreBrand } from "@/components/store/settings/store-brand";
 import { useSession } from "@/components/session-provider";
 import { Button } from "@/components/ui/button";
 import { DEFAULT_STORE_SETTINGS, fetchStoreSettings } from "@/lib/store-settings";

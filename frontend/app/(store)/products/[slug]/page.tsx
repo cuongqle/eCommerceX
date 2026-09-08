@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { ProductGallery } from "@/components/store/product-gallery";
-import { AddToCartButton } from "@/components/store/add-to-cart-button";
-import { ProductCard } from "@/components/store/product-card";
+import { AddToCartButton } from "@/components/store/cart/add-to-cart-button";
+import { ProductCard } from "@/components/store/products/product-card";
+import { ProductGallery } from "@/components/store/products/product-gallery";
 import { api, ApiRequestError } from "@/lib/api";
 import { money } from "@/lib/format";
 import { categoryTrail, type Paginated, type Product } from "@/lib/types";

@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, ShoppingBag, X } from "lucide-react";
-import { CategoryMenu } from "@/components/store/category-menu";
-import { StoreBrand } from "@/components/store/store-brand";
-import { useStoreSettings } from "@/components/store/store-settings-provider";
+import { CategoryMenu } from "@/components/store/categories/category-menu";
+import { StoreBrand } from "@/components/store/settings/store-brand";
+import { useStoreSettings } from "@/components/store/settings/store-settings-provider";
 import { useSession } from "@/components/session-provider";
 import { Button, buttonVariants } from "@/components/ui/button";
 import type { CategoryTree } from "@/lib/categories";

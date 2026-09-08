@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
-import { CategoryNav } from "@/components/store/category-nav";
-import { DepartmentSection } from "@/components/store/department-section";
-import { TrustStrip } from "@/components/store/trust-strip";
+import { CategoryNav } from "@/components/store/categories/category-nav";
+import { TrustStrip } from "@/components/store/layout/trust-strip";
+import { DepartmentSection } from "@/components/store/products/department-section";
 import { buttonVariants } from "@/components/ui/button";
 import { api } from "@/lib/api";
 import { money } from "@/lib/format";

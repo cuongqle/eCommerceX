@@ -1,8 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { StoreBrand } from "@/components/store/store-brand";
-import { useStoreSettings } from "@/components/store/store-settings-provider";
+import { StoreBrand } from "@/components/store/settings/store-brand";
+import { useStoreSettings } from "@/components/store/settings/store-settings-provider";
 
 export function AuthPanel({
   kicker,

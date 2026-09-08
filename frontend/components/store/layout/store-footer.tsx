@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { StoreBrand } from "@/components/store/store-brand";
-import { useStoreSettings } from "@/components/store/store-settings-provider";
+import { StoreBrand } from "@/components/store/settings/store-brand";
+import { useStoreSettings } from "@/components/store/settings/store-settings-provider";
 import { useSession } from "@/components/session-provider";
 
 export function StoreFooter() {

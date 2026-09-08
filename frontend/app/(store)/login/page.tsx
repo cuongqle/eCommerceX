@@ -4,7 +4,7 @@ import { FormEvent, Suspense, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { loginRequest, useSession } from "@/components/session-provider";
-import { AuthPanel } from "@/components/store/auth-panel";
+import { AuthPanel } from "@/components/store/auth/auth-panel";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

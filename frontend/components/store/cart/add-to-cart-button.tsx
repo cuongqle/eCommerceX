@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { api } from "@/lib/api";
 import { useSession } from "@/components/session-provider";
-import { QuantityStepper } from "@/components/store/quantity-stepper";
+import { QuantityStepper } from "@/components/store/cart/quantity-stepper";
 import { Button, buttonVariants } from "@/components/ui/button";
 import type { Cart } from "@/lib/types";
 import { cn } from "@/lib/utils";

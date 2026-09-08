@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { ProductCard } from "@/components/store/product-card";
+import { ProductCard } from "@/components/store/products/product-card";
 import type { CategoryTree } from "@/lib/categories";
 import type { Product } from "@/lib/types";
 import { cn } from "@/lib/utils";
