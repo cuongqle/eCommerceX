@@ -48,6 +48,7 @@ services:
       CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET:-}
       CLOUDINARY_URL: ${CLOUDINARY_URL:-}
       CLOUDINARY_FOLDER: ${CLOUDINARY_FOLDER:-ecommercex/products}
+      SEED_ON_EMPTY: ${SEED_ON_EMPTY:-true}
     depends_on:
       api-test:
         condition: service_completed_successfully

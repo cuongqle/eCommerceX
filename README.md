@@ -71,7 +71,9 @@ cp frontend/.env.example frontend/.env.local
 docker compose up -d --build
 ```
 
-4. Seed demo data (wipes users, catalog, carts, and orders):
+4. The API seeds the demo catalog **the first time** Mongo has no users. Later boots skip it.
+
+To wipe and reseed:
 
 ```bash
 docker compose exec api node dist/scripts/seed.js
@@ -188,4 +190,4 @@ eCommerceX/
 └── frontend/                Next.js store (`app/(store)`) + admin (`app/admin`)
 ```
 
-Seed **deletes** users, categories, products, carts, and orders, then inserts the demo catalog. Sign in again after a reseed.
+On boot, the API inserts the demo catalog only if there are no users (`SEED_ON_EMPTY=true`). `npm run seed` / `seed.js` still **deletes** users, categories, products, carts, and orders, then inserts the demo catalog. Sign in again after a reseed.

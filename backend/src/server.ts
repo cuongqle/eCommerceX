@@ -1,9 +1,13 @@
 import { connectDb } from "./config/db";
 import { env } from "./config/env";
 import { createApp } from "./app";
+import { seedIfEmpty } from "./modules/seed/seed.service";
 
 async function bootstrap() {
   await connectDb();
+  if (env.SEED_ON_EMPTY) {
+    await seedIfEmpty();
+  }
   const app = createApp();
 
   app.listen(env.PORT, () => {

@@ -15,6 +15,10 @@ const envSchema = z.object({
   CLOUDINARY_API_SECRET: z.string().optional(),
   CLOUDINARY_URL: z.string().optional(),
   CLOUDINARY_FOLDER: z.string().default("ecommercex/products"),
+  SEED_ON_EMPTY: z.preprocess(
+    (value) => (value === undefined || value === "" ? "true" : value),
+    z.enum(["true", "false"]).transform((value) => value === "true")
+  ),
 });
 
 const parsed = envSchema.safeParse(process.env);
