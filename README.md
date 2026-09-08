@@ -140,7 +140,12 @@ docker compose down             # keep the Mongo volume
 docker compose down -v          # wipe the database volume
 ```
 
-The API container reads `backend/.env` for JWT and Cloudinary, and overrides the Mongo host to the Compose service name `db`.
+The API container reads `backend/.env` for JWT (file is not committed). Cloudinary is declared on the `api` service and interpolated from a root `.env` or `docker compose --env-file backend/.env`. Mongo is always `mongodb://db:27017/ecommercex`.
+
+```bash
+cp .env.example .env   # fill Cloudinary keys, do not commit
+docker compose --env-file backend/.env up -d --build
+```
 
 ## Environment
 

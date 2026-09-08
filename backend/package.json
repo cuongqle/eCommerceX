@@ -14,7 +14,7 @@
     "test:docker": "docker compose -f ../docker-compose.yml run --rm api-test",
     "typecheck": "tsc --noEmit",
     "db:up": "docker compose -f ../docker-compose.yml up -d db",
-    "compose:up": "docker compose -f ../docker-compose.yml up -d --build",
+    "compose:up": "docker compose --env-file ../backend/.env -f ../docker-compose.yml up -d --build",
     "compose:down": "docker compose -f ../docker-compose.yml down"
   },
   "keywords": [

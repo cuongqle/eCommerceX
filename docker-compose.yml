@@ -42,6 +42,12 @@ services:
       NODE_ENV: production
       PORT: 4000
       MONGODB_URI: mongodb://db:27017/ecommercex
+      # Interpolated from a root `.env` or `docker compose --env-file backend/.env`
+      CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME:-}
+      CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY:-}
+      CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET:-}
+      CLOUDINARY_URL: ${CLOUDINARY_URL:-}
+      CLOUDINARY_FOLDER: ${CLOUDINARY_FOLDER:-ecommercex/products}
     depends_on:
       api-test:
         condition: service_completed_successfully
