@@ -71,7 +71,7 @@ cp frontend/.env.example frontend/.env.local
 docker compose up -d --build
 ```
 
-4. The API seeds the demo catalog **the first time** Mongo has no users. Later boots skip it.
+4. On boot the API runs [migrate-mongo](https://github.com/seppevs/migrate-mongo) (`changelog` collection). The first two scripts create store settings and the demo catalog.
 
 To wipe and reseed:
 
@@ -120,7 +120,10 @@ yarn dev
 | `backend`: `npm run dev` | API with reload on `:4000` |
 | `backend`: `npm test` | Unit tests (Vitest) |
 | `backend`: `npm run test:docker` | Same suite inside the Compose `api-test` image |
-| `backend`: `npm run seed` | Reset and seed Mongo |
+| `backend`: `npm run migrate` | Apply pending migrate-mongo scripts |
+| `backend`: `npm run migrate:status` | Show applied / pending files |
+| `backend`: `npm run migrate:create -- add_index` | Scaffold a new migration |
+| `backend`: `npm run seed` | Wipe catalog and insert demo data |
 | `backend`: `npm run db:up` | Start only the `db` service |
 | `backend`: `npm run compose:up` | Build and start `db` + `api` |
 | `frontend`: `yarn dev` | Next.js on `:3000` |
@@ -184,10 +187,21 @@ docker compose --env-file backend/.env up -d --build
 eCommerceX/
 ├── docker-compose.yml
 ├── backend/                 Express + Mongoose API
+│   ├── migrate-mongo-config.js
+│   ├── src/migrations/      migrate-mongo up/down scripts
 │   ├── src/models/          User, Category, Product, Cart, Order, Settings
 │   ├── src/modules/         route → controller → service
-│   └── src/scripts/seed.ts
+│   └── src/scripts/         migrate.ts, seed.ts
 └── frontend/                Next.js store (`app/(store)`) + admin (`app/admin`)
 ```
 
-On boot, the API inserts the demo catalog only if there are no users (`SEED_ON_EMPTY=true`). `npm run seed` / `seed.js` still **deletes** users, categories, products, carts, and orders, then inserts the demo catalog. Sign in again after a reseed.
+The API runs pending [migrate-mongo](https://github.com/seppevs/migrate-mongo) scripts on startup. Applied files are stored in the `changelog` collection.
+
+```bash
+cd backend
+npm run migrate:create -- add-order-index
+# edit src/migrations/<timestamp>-add-order-index.ts
+npm run migrate
+```
+
+`npm run seed` still **deletes** users, categories, products, carts, and orders, then inserts the demo catalog. Sign in again after a reseed.
