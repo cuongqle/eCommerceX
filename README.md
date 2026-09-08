@@ -1,6 +1,6 @@
 # eCommerceX
 
-Learning full-stack store: a customer shop and an admin console that share one catalog API.
+Full-stack store: a customer shop and an admin console that share one catalog API.
 
 The storefront lists products by department, handles cart and checkout, and shows order history. The console manages products (including Cloudinary uploads), categories, orders, and users.
 
