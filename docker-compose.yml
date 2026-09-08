@@ -1,0 +1,70 @@
+services:
+  db:
+    image: mongo:7
+    container_name: ecommercex-db
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - ecommercex_mongo:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - ecommercex
+
+  api-test:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: test
+    container_name: ecommercex-api-test
+    command: ["npm", "test"]
+    restart: "no"
+    networks:
+      - ecommercex
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: runner
+    container_name: ecommercex-api
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    env_file:
+      - ./backend/.env
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      MONGODB_URI: mongodb://db:27017/ecommercex
+    depends_on:
+      api-test:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:4000/health').then((r) => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - ecommercex
+
+volumes:
+  ecommercex_mongo:
+
+networks:
+  ecommercex:
+    driver: bridge
