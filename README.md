@@ -4,6 +4,8 @@ Learning full-stack store: a customer shop and an admin console that share one c
 
 The storefront lists products by department, handles cart and checkout, and shows order history. The console manages products (including Cloudinary uploads), categories, orders, and users.
 
+**Demo:** [https://e-commerce-x-nu.vercel.app](https://e-commerce-x-nu.vercel.app/) — store `/`, admin `/admin`
+
 ## Architecture
 
 ```
